@@ -1,0 +1,314 @@
+﻿Build1=Default,b4a.example
+File1=config.bal
+File10=icons8-less-than-48.png
+File11=icons8-mapa-64.png
+File12=icons8-map-blue.png
+File13=icons8-map-green.png
+File14=icons8-map-red.png
+File15=icons8-settings-blue.png
+File16=icons8-settings-green.png
+File17=icons8-soil-blue.png
+File18=icons8-soil-green.png
+File19=icons8-soil-red.png
+File2=database-filled-blue.png
+File20=icons8-tractor-96 (1).png
+File21=icons8-tractor-96.png
+File22=icons8-tractor-blue.png
+File23=icons8-tractor-green.png
+File24=icons8-tractor-red.png
+File25=icons8-unsplash-blue.png
+File26=icons8-unsplash-green.png
+File27=icons8-unsplash-red.png
+File28=icons8-wi-fi-blue.png
+File29=icons8-wi-fi-green.png
+File3=database-filled-green.png
+File30=icons8-wi-fi-red.png
+File31=login.bal
+File32=logosensorvisionrgb_small.png
+File33=main.bal
+File34=mapa.bal
+File35=sensorvision_logo_transparentgif.gif
+File36=whatsapp image 2019-05-14 at 14.06.04.jpeg
+File4=database-filled-red.png
+File5=icons8-configuracoes-48.png
+File6=icons8-grass-blue.png
+File7=icons8-grass-green.png
+File8=icons8-grass-red.png
+File9=icons8-harvester-96.png
+FileGroup1=Default Group
+FileGroup10=Default Group
+FileGroup11=Default Group
+FileGroup12=Default Group
+FileGroup13=Default Group
+FileGroup14=Default Group
+FileGroup15=Default Group
+FileGroup16=Default Group
+FileGroup17=Default Group
+FileGroup18=Default Group
+FileGroup19=Default Group
+FileGroup2=Default Group
+FileGroup20=Default Group
+FileGroup21=Default Group
+FileGroup22=Default Group
+FileGroup23=Default Group
+FileGroup24=Default Group
+FileGroup25=Default Group
+FileGroup26=Default Group
+FileGroup27=Default Group
+FileGroup28=Default Group
+FileGroup29=Default Group
+FileGroup3=Default Group
+FileGroup30=Default Group
+FileGroup31=Default Group
+FileGroup32=Default Group
+FileGroup33=Default Group
+FileGroup34=Default Group
+FileGroup35=Default Group
+FileGroup36=Default Group
+FileGroup4=Default Group
+FileGroup5=Default Group
+FileGroup6=Default Group
+FileGroup7=Default Group
+FileGroup8=Default Group
+FileGroup9=Default Group
+Group=Default Group
+IconFile=
+Library1=core
+Library10=phone
+Library2=network
+Library3=json
+Library4=reflection
+Library5=stringutils
+Library6=runtimepermissions
+Library7=betterdialogs
+Library8=maskededittext
+Library9=javaobject
+ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: https://www.b4x.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="7" android:targetSdkVersion="26"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~	~\n~'************ Google Maps ************~\n~'AddApplicationText(~\n~'<meta-data~\n~'  android:name="com.google.android.geo.API_KEY"~\n~'  android:value="AIzaSyBLkVDYJy9WzV2fjeIj7kxS9AdvUz91-jY"/>~\n~')~\n~'************ Google Maps end************~\n~~\n~'************Open external map ***********~\n~AddManifestText(<uses-permission~\n~   android:name="android.permission.WRITE_EXTERNAL_STORAGE"~\n~   android:maxSdkVersion="18" />~\n~)~\n~AddPermission(android.permission.WRITE_EXTERNAL_STORAGE)~\n~~\n~AddApplicationText(~\n~  <provider~\n~  android:name="android.support.v4.content.FileProvider"~\n~  android:authorities="$PACKAGE$.provider"~\n~  android:exported="false"~\n~  android:grantUriPermissions="true">~\n~  <meta-data~\n~     android:name="android.support.FILE_PROVIDER_PATHS"~\n~     android:resource="@xml/provider_paths"/>~\n~  </provider>~\n~)~\n~CreateResource(xml, provider_paths,~\n~   <files-path name="path" path="shared" />~\n~)~\n~'*******************************************~\n~~\n~'CreateResourceFromFile(Macro, FirebaseAnalytics.GooglePlayBase)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~CreateResourceFromFile(Macro, Themes.DarkTheme)~\n~CreateResourceFromFile(Macro, Core.NetworkClearText)~\n~'End of default text.~\n~
+Module1=Starter
+Module2=connection
+Module3=maps
+Module4=clsEditableGrid
+Module5=FileProvider
+Module6=CustomListView
+Module7=CallSubUtils
+NumberOfFiles=36
+NumberOfLibraries=10
+NumberOfModules=7
+Version=9.01
+@EndOfDesignText@
+ #Region  Project Attributes 
+	#ApplicationLabel: SensorVision Agrocam
+	#VersionCode: 1
+	#VersionName: AndroidCam
+	'SupportedOrientations possible values: unspecified, landscape or portrait.
+	#SupportedOrientations: portrait
+	#CanInstallToExternalStorage: False
+'	#AdditionalJar: com.google.android.gms:play-services-maps
+#End Region
+
+#Region  Activity Attributes 
+	#FullScreen: False
+	#IncludeTitle: False
+#End Region
+
+Sub Process_Globals
+	'These global variables will be declared once when the application starts.
+	'These variables can be accessed from all modules.
+End Sub
+
+Sub Globals
+	Private btnEnter As Button
+	Private password As EditText
+	Private username As EditText
+	Private btnwifi As Button
+	Private Lblconfig As Label
+	Private Lblcamera As Label
+	Private Lbldaninha As Label
+	Private Lblmap As Label
+	Private Lbltractor As Label
+	Private Lbldata As Label
+	Private Lblfalha As Label
+	Private Lblwifi As Label
+	Private first_time As Boolean
+	Private btncamera As Button
+	Private mode As String = "stopAnyMode"		'mantem registro de qual modo está ligado ou desligado no processaamneto principal
+End Sub
+
+Sub Activity_Create(firstTime As Boolean)
+	Activity.LoadLayout("login")
+	first_time = firstTime
+	File.Delete(File.DirInternal, "default.json")
+	File.Delete(File.DirInternal, "status.json")
+	If File.Exists(File.DirInternal,"setIP.txt") And File.ReadString(File.DirInternal, "setIP.txt") <> "" Then
+		Starter.ip = File.ReadString(File.DirInternal, "setIP.txt")
+	End If
+End Sub
+
+Sub Activity_Resume
+	
+End Sub
+
+Sub Activity_Pause (UserClosed As Boolean)
+	If UserClosed Then
+		'File.Delete(File.DirInternal, "default.json")
+		'File.Delete(File.DirInternal, "status.json")
+		Activity.Finish
+	End If
+End Sub
+
+Sub password_EnterPressed
+	btnEnter_Click
+End Sub
+
+Sub btnEnter_Click
+	If username.Text.Trim="" Or password.Text.Trim="" Then
+		MsgboxAsync("Por favor, preencha usuário e senha","")
+	Else If username.Text="admin" And password.Text="admin" Then
+		If first_time Then
+			If Not(File.Exists(File.DirInternal,"setIP.txt")) Or File.ReadString(File.DirInternal, "setIP.txt") = "" Then
+				setIP
+			End If
+		End If
+		Activity.RemoveAllViews
+		Activity.LoadLayout("main")
+	Else
+		MsgboxAsync("usuário ou senha incorreta","")
+	End If
+End Sub
+
+Sub btnmap_Click
+	CallSub2(Starter,"RequestFile", "shapefile")
+	Sleep(200)
+	StartActivity("maps")
+End Sub
+
+Sub Lblmap_Click
+	CallSub2(Starter,"RequestFile", "shapefile")
+	Sleep(200)
+	StartActivity("maps")
+End Sub
+
+Sub btnconfig_Click
+	CallSub2(Starter, "RequestFile", "default")
+	Sleep(200)
+	StartActivity("connection")
+End Sub
+
+Sub Lblconfig_Click
+	CallSub2(Starter, "RequestFile", "default")
+	Sleep(200)
+	StartActivity("connection")
+End Sub
+
+Sub btnwifi_Click
+	setIP
+End Sub
+
+Sub Lblwifi_Click
+	setIP
+End Sub
+
+'inicializar ou parar programa principal de processamento de falhas
+Sub Lblfalha_Click
+	If Not(mode = "startFalhaMode") Then
+		mode = "startFalhaMode"
+		CallSub2(Starter, "RequestFile", mode)
+		Else
+		mode = "stopAnyMode"
+		CallSub2(Starter, "RequestFile", mode)
+	End If
+	MsgboxAsync("Comando " & mode & " enviado","")
+End Sub
+
+Sub btnfalha_Click
+	If Not(mode = "startFalhaMode") Then
+		mode = "startFalhaMode"
+		CallSub2(Starter, "RequestFile", mode)
+	Else
+		mode = "stopAnyMode"
+		CallSub2(Starter, "RequestFile", mode)
+	End If
+	MsgboxAsync("Comando " & mode & " enviado","")
+End Sub
+
+Sub LblLogout_Click
+	Activity.RemoveAllViews
+	Activity.LoadLayout("login")
+End Sub
+
+'apresenta dados do arquivo recebido caso ele exista, senao, mostra icone vermelho de conexao, avisando que algo pode estar errado
+Sub showJsonFile
+	Dim Map1 As Map
+	Dim JSON As JSONParser
+	Try
+		If File.Exists(File.DirInternal,"status.json") Then
+			JSON.Initialize(File.ReadString(File.DirInternal, "status.json"))
+		Else
+			Log("Arquivo status.json nao encontrado")
+			If btnwifi.IsInitialized Then
+				btnwifi.SetBackgroundImage(LoadBitmap(File.DirAssets, "icons8-wi-fi-red.png"))
+			End If
+			Return
+		End If
+		Map1 = JSON.NextObject
+		'update tractor
+		Dim controle As String = Map1.Get("trator")
+		Lbltractor.Text ="Trator: " & controle
+		'update data
+		controle = Map1.Get("armazenamento")
+		Lbldata.Text ="Uso do armazenamento: " & controle & "%"
+		'update camera
+		controle = Map1.Get("camera")
+		Lblcamera.Text ="Câmera: " & controle
+		If controle = "ligada" Then
+			btncamera.SetBackgroundImage(LoadBitmap(File.DirAssets, "icons8-unsplash-green.png"))
+		Else if controle = "desligada" Then
+			btncamera.SetBackgroundImage(LoadBitmap(File.DirAssets, "icons8-unsplash-red.png"))
+		End If
+		'update wifi status
+		If (Starter.requestedFile) Then
+			btnwifi.SetBackgroundImage(LoadBitmap(File.DirAssets, "icons8-wi-fi-red.png"))
+		Else
+			btnwifi.SetBackgroundImage(LoadBitmap(File.DirAssets, "icons8-wi-fi-green.png"))
+		End If
+	Catch
+		Log(LastException)
+	End Try
+End Sub
+
+'pede novo endereço IP para o usuário e selva em um arquivo txt
+Sub setIP
+	File.OpenOutput(File.DirInternal,"setIP.txt", False)
+	
+	'Input box
+	Dim BD As BetterDialogs
+	Dim bdinput As BD_InputBoxParams
+	bdinput.Initialize
+	bdinput.Question = "<I>Defina seu endereço IP </I>"
+	bdinput.QuestionTextSize = 18
+	bdinput.SpaceBetween = 4dip
+	bdinput.InputTextSize = 24
+	bdinput.InputType = bdinput.INPUT_TYPE_TEXT
+	bdinput.Gravity = Gravity.CENTER_VERTICAL + Gravity.CENTER_HORIZONTAL
+	bdinput.ValidationCallback = "Input_Validation"
+	bdinput.WithSuggestions = True
+	bdinput.Format = "###.###.##.##"
+	
+	Dim DR As Int
+	DR = BD.InputBox("Configuração", bdinput, "OK", "Cancel", "", Null)
+	If DR = DialogResponse.POSITIVE Then
+		Log(bdinput.Answer)
+		Log(bdinput.CompactAnswer)
+		File.WriteString(File.DirInternal, "setIP.txt", bdinput.CompactAnswer)
+		Starter.ip = bdinput.CompactAnswer
+	End If
+End Sub
+
+'verifica se entrada de texto foi preenchida
+Sub Input_Validation(Answer As String, CompactAnswer As String) As String
+	If CompactAnswer = "" Then
+		Return "Preencha com um valor válido"
+	Else
+		Return ""
+	End If
+End Sub
