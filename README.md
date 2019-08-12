@@ -14,4 +14,4 @@ Install AndroidCam.apk in your Android device.
 	MaskedEditText
 
 ##Developers##
-Raissa Furlan Davinha (raissa.furlan@sensorvision.com.br)
+Raissa Furlan Davinha (raissa.furlan@gmail.com)
